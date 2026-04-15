@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ertugrulgul.com.tr</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0f1117;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: #e0e0e0;
+    }
+
+    .container {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .dot-anim {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 2.5rem;
+    }
+
+    .dot-anim span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #4a90d9;
+      animation: bounce 1.4s infinite ease-in-out both;
+    }
+
+    .dot-anim span:nth-child(1) { animation-delay: -0.32s; }
+    .dot-anim span:nth-child(2) { animation-delay: -0.16s; }
+
+    @keyframes bounce {
+      0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+      40%            { transform: scale(1.0); opacity: 1;   }
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: #c8d8ea;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: #6b7a8d;
+      letter-spacing: 0.04em;
+    }
+
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: #2a3a4a;
+      margin: 1.8rem auto;
+    }
+
+    .email {
+      font-size: 0.85rem;
+      color: #4a90d9;
+      text-decoration: none;
+      opacity: 0.75;
+      transition: opacity 0.2s;
+    }
+
+    .email:hover {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="dot-anim">
+      <span></span><span></span><span></span>
+    </div>
+    <h1>Çalışmalar devam ediyor</h1>
+    <p>Site en kısa sürede yayında olacak.</p>
+    <div class="divider"></div>
+    <a class="email" href="mailto:ertugrulgul@hakkari.edu.tr">ertugrulgul@hakkari.edu.tr</a>
+  </div>
+</body>
+</html>
