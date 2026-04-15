@@ -1,30 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ertuğrul Gül — Climate Researcher</title>
+  <title>Ertuğrul Gül</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg:        #08090d;
-      --surface:   #0e1018;
-      --border:    rgba(255,255,255,0.06);
-      --ice:       #9dd4e8;
-      --ice-dim:   rgba(157,212,232,0.15);
-      --ice-glow:  rgba(157,212,232,0.06);
-      --text:      #d8dde8;
-      --muted:     #5a6275;
-      --accent:    #c8e8f5;
+      --bg:       #08090d;
+      --surface:  #0e1018;
+      --border:   rgba(255,255,255,0.06);
+      --ice:      #9dd4e8;
+      --ice-dim:  rgba(157,212,232,0.15);
+      --text:     #d8dde8;
+      --muted:    #5a6275;
+      --accent:   #c8e8f5;
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--bg);
       color: var(--text);
@@ -33,566 +29,292 @@
       line-height: 1.7;
       overflow-x: hidden;
     }
-
-    /* ── Topographic SVG background ── */
     body::before {
       content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800'%3E%3Cdefs%3E%3Cstyle%3Epath%7Bfill:none;stroke:rgba(157,212,232,0.04);stroke-width:1%7D%3C/style%3E%3C/defs%3E%3Cpath d='M400,400 Q200,250 100,400 Q0,550 200,600 Q400,650 500,500 Q600,350 500,200 Q400,50 300,150 Q200,250 300,350 Q400,450 350,400'/%3E%3Cpath d='M400,400 Q300,200 150,300 Q0,400 100,550 Q200,700 400,680 Q600,660 650,500 Q700,340 580,200 Q460,60 350,180 Q240,300 340,380'/%3E%3Cpath d='M400,400 Q250,150 50,250 Q-150,350 50,580 Q250,810 450,760 Q650,710 720,520 Q790,330 640,160 Q490,0 370,140 Q250,280 360,380'/%3E%3Cpath d='M400,400 Q450,300 550,250 Q650,200 680,300 Q710,400 630,480 Q550,560 450,520 Q350,480 380,420'/%3E%3Cpath d='M400,400 Q480,350 560,380 Q640,410 620,480 Q600,550 520,560 Q440,570 410,500'/%3E%3C/svg%3E");
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800'%3E%3Cdefs%3E%3Cstyle%3Epath%7Bfill:none;stroke:rgba(157,212,232,0.04);stroke-width:1%7D%3C/style%3E%3C/defs%3E%3Cpath d='M400,400 Q200,250 100,400 Q0,550 200,600 Q400,650 500,500 Q600,350 500,200 Q400,50 300,150 Q200,250 300,350 Q400,450 350,400'/%3E%3Cpath d='M400,400 Q300,200 150,300 Q0,400 100,550 Q200,700 400,680 Q600,660 650,500 Q700,340 580,200 Q460,60 350,180 Q240,300 340,380'/%3E%3Cpath d='M400,400 Q250,150 50,250 Q-150,350 50,580 Q250,810 450,760 Q650,710 720,520 Q790,330 640,160 Q490,0 370,140 Q250,280 360,380'/%3E%3Cpath d='M400,400 Q450,300 550,250 Q650,200 680,300 Q710,400 630,480 Q550,560 450,520 Q350,480 380,420'/%3E%3C/svg%3E");
       background-size: 800px 800px;
-      opacity: 1;
       pointer-events: none;
       z-index: 0;
     }
 
-    /* ── Noise grain ── */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.4;
-    }
-
-    /* ── Layout ── */
-    .wrap {
-      position: relative;
-      z-index: 1;
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* ── NAV ── */
+    /* NAV */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
+      position: fixed; top: 0; left: 0; right: 0;
       z-index: 100;
       padding: 1.25rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display: flex; justify-content: space-between; align-items: center;
       border-bottom: 1px solid var(--border);
       backdrop-filter: blur(20px);
-      background: rgba(8,9,13,0.7);
+      background: rgba(8,9,13,0.75);
     }
-
     .nav-logo {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
-      color: var(--ice);
-      letter-spacing: 0.08em;
-      text-decoration: none;
+      font-size: 0.78rem; color: var(--ice);
+      letter-spacing: 0.08em; text-decoration: none;
     }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
+    .nav-right { display: flex; align-items: center; gap: 2rem; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--muted);
-      text-decoration: none;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      transition: color 0.2s;
+      font-size: 0.72rem; color: var(--muted);
+      text-decoration: none; letter-spacing: 0.06em;
+      text-transform: uppercase; transition: color 0.2s;
     }
-
     .nav-links a:hover { color: var(--ice); }
 
-    /* ── HERO ── */
-    #hero {
-      min-height: 100vh;
+    /* LANG TOGGLE */
+    .lang-toggle {
       display: flex;
-      align-items: center;
-      padding-top: 5rem;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      overflow: hidden;
     }
-
-    .hero-inner {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 4rem;
-      align-items: center;
-      width: 100%;
-    }
-
-    .hero-tag {
+    .lang-btn {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--ice);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.2s forwards;
-    }
-
-    .hero-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3rem, 7vw, 5.5rem);
-      font-weight: 300;
-      line-height: 1.05;
-      color: #eef2f7;
-      letter-spacing: -0.01em;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.35s forwards;
-    }
-
-    .hero-name em {
-      font-style: italic;
-      color: var(--ice);
-    }
-
-    .hero-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      font-weight: 300;
-      font-style: italic;
-      color: var(--muted);
-      margin-top: 1rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.5s forwards;
-    }
-
-    .hero-desc {
-      max-width: 480px;
-      margin-top: 2rem;
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.8;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.65s forwards;
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2.5rem;
-      opacity: 0;
-      animation: fadeUp 0.8s 0.8s forwards;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.65rem 1.5rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 2px;
+      font-size: 0.65rem; letter-spacing: 0.1em;
+      padding: 0.35rem 0.7rem;
+      background: none; border: none;
+      color: var(--muted); cursor: pointer;
       transition: all 0.2s;
     }
-
-    .btn-primary {
+    .lang-btn.active {
       background: var(--ice);
       color: var(--bg);
     }
+    .lang-btn:not(.active):hover { color: var(--ice); }
 
-    .btn-primary:hover {
-      background: #fff;
-      transform: translateY(-1px);
+    /* LAYOUT */
+    .wrap {
+      position: relative; z-index: 1;
+      max-width: 860px; margin: 0 auto; padding: 0 2rem;
     }
 
-    .btn-ghost {
-      border: 1px solid var(--border);
-      color: var(--muted);
+    /* HERO */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center; padding-top: 5rem;
     }
-
-    .btn-ghost:hover {
-      border-color: var(--ice);
-      color: var(--ice);
-      transform: translateY(-1px);
+    .hero-inner {
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 4rem; align-items: center; width: 100%;
     }
+    .hero-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; color: var(--ice);
+      letter-spacing: 0.14em; text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+    }
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 300; line-height: 1.05; color: #eef2f7;
+      letter-spacing: -0.01em;
+      opacity: 0; animation: fadeUp 0.8s 0.35s forwards;
+    }
+    .hero-name em { font-style: italic; color: var(--ice); }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 300; font-style: italic;
+      color: var(--muted); margin-top: 1rem;
+      opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
+    }
+    .hero-desc {
+      max-width: 480px; margin-top: 2rem;
+      font-size: 0.9rem; color: var(--muted); line-height: 1.8;
+      opacity: 0; animation: fadeUp 0.8s 0.65s forwards;
+    }
+    .hero-cta {
+      display: flex; gap: 1rem; margin-top: 2.5rem;
+      opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+    }
+    .btn {
+      display: inline-block; padding: 0.65rem 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; border-radius: 2px; transition: all 0.2s;
+    }
+    .btn-primary { background: var(--ice); color: var(--bg); }
+    .btn-primary:hover { background: #fff; transform: translateY(-1px); }
+    .btn-ghost { border: 1px solid var(--border); color: var(--muted); }
+    .btn-ghost:hover { border-color: var(--ice); color: var(--ice); transform: translateY(-1px); }
 
-    /* coordinate card */
+    /* COORD CARD */
     .coord-card {
-      opacity: 0;
-      animation: fadeIn 1s 1s forwards;
+      opacity: 0; animation: fadeIn 1s 1s forwards;
       border: 1px solid var(--border);
-      padding: 1.5rem;
-      border-radius: 4px;
-      background: var(--surface);
-      min-width: 180px;
-      text-align: center;
+      padding: 1.5rem; border-radius: 4px;
+      background: var(--surface); min-width: 180px; text-align: center;
     }
-
     .coord-label {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.6rem;
-      color: var(--muted);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 0.4rem;
+      font-size: 0.6rem; color: var(--muted);
+      letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem;
     }
-
     .coord-value {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.95rem;
-      color: var(--ice);
-      letter-spacing: 0.04em;
-      display: block;
-      margin-bottom: 1rem;
+      font-size: 0.95rem; color: var(--ice);
+      letter-spacing: 0.04em; display: block; margin-bottom: 1rem;
     }
+    .coord-divider { height: 1px; background: var(--border); margin: 0.8rem 0; }
 
-    .coord-divider {
-      height: 1px;
-      background: var(--border);
-      margin: 0.8rem 0;
-    }
-
-    /* ── SECTION BASE ── */
-    section {
-      padding: 6rem 0;
-      border-top: 1px solid var(--border);
-    }
-
+    /* SECTIONS */
+    section { padding: 6rem 0; border-top: 1px solid var(--border); }
     .section-label {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--ice);
-      margin-bottom: 3rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+      font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--ice); margin-bottom: 3rem;
+      display: flex; align-items: center; gap: 1rem;
     }
-
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
     .section-heading {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 300;
-      line-height: 1.15;
-      color: #eef2f7;
-      margin-bottom: 1.5rem;
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 300;
+      line-height: 1.15; color: #eef2f7; margin-bottom: 1.5rem;
     }
+    .section-heading em { font-style: italic; color: var(--ice); }
 
-    .section-heading em {
-      font-style: italic;
-      color: var(--ice);
-    }
-
-    /* ── ABOUT ── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    .about-text p {
-      color: var(--muted);
-      font-size: 0.92rem;
-      margin-bottom: 1rem;
-    }
-
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .about-text p { color: var(--muted); font-size: 0.92rem; margin-bottom: 1rem; }
     .about-text p:last-child { margin-bottom: 0; }
-
-    .stat-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
+    .stat-list { display: flex; flex-direction: column; gap: 1.5rem; }
     .stat-item {
-      padding: 1.2rem 1.5rem;
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      background: var(--surface);
-      position: relative;
-      overflow: hidden;
+      padding: 1.2rem 1.5rem; border: 1px solid var(--border);
+      border-radius: 3px; background: var(--surface);
+      position: relative; overflow: hidden;
     }
-
     .stat-item::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 2px;
-      background: var(--ice);
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 2px; background: var(--ice);
     }
-
     .stat-num {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
-      font-weight: 300;
-      color: var(--accent);
-      display: block;
-      line-height: 1;
+      font-size: 2rem; font-weight: 300; color: var(--accent);
+      display: block; line-height: 1;
     }
+    .stat-desc { font-size: 0.78rem; color: var(--muted); margin-top: 0.25rem; }
 
-    .stat-desc {
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-top: 0.25rem;
-    }
-
-    /* ── RESEARCH ── */
-    .research-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
+    /* RESEARCH */
+    .research-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
     .research-card {
-      padding: 1.75rem;
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      background: var(--surface);
+      padding: 1.75rem; border: 1px solid var(--border);
+      border-radius: 3px; background: var(--surface);
       transition: border-color 0.2s, transform 0.2s;
-      position: relative;
-      overflow: hidden;
+      position: relative; overflow: hidden;
     }
-
     .research-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 1px;
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
       background: linear-gradient(90deg, transparent, var(--ice), transparent);
-      opacity: 0;
-      transition: opacity 0.3s;
+      opacity: 0; transition: opacity 0.3s;
     }
-
-    .research-card:hover {
-      border-color: rgba(157,212,232,0.2);
-      transform: translateY(-2px);
-    }
-
+    .research-card:hover { border-color: rgba(157,212,232,0.2); transform: translateY(-2px); }
     .research-card:hover::after { opacity: 1; }
-
-    .rc-icon {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      display: block;
-    }
-
+    .rc-icon { font-size: 1.5rem; margin-bottom: 1rem; display: block; }
     .rc-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: #eef2f7;
-      margin-bottom: 0.5rem;
+      font-size: 1.2rem; font-weight: 400; color: #eef2f7; margin-bottom: 0.5rem;
     }
-
-    .rc-desc {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .rc-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 1rem;
-    }
-
+    .rc-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+    .rc-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
     .tag {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.06em;
-      padding: 0.2rem 0.6rem;
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      color: var(--muted);
+      font-size: 0.6rem; letter-spacing: 0.06em;
+      padding: 0.2rem 0.6rem; border: 1px solid var(--border);
+      border-radius: 2px; color: var(--muted);
     }
 
-    /* ── PROJECTS ── */
-    .project-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-      margin-top: 2rem;
-    }
-
+    /* PROJECTS */
+    .project-list { display: flex; flex-direction: column; gap: 1px; margin-top: 2rem; }
     .project-item {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 2rem;
-      align-items: center;
-      padding: 1.5rem 0;
+      display: grid; grid-template-columns: auto 1fr auto;
+      gap: 2rem; align-items: center; padding: 1.5rem 0;
       border-bottom: 1px solid var(--border);
-      text-decoration: none;
-      color: inherit;
-      transition: all 0.2s;
-      group: true;
+      text-decoration: none; color: inherit; transition: all 0.2s;
     }
-
     .project-item:hover .proj-title { color: var(--ice); }
     .project-item:hover .proj-arrow { color: var(--ice); transform: translate(2px, -2px); }
-
     .proj-year {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-      min-width: 40px;
+      font-size: 0.68rem; color: var(--muted);
+      letter-spacing: 0.06em; min-width: 40px;
     }
-
     .proj-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      font-weight: 400;
-      color: var(--text);
-      transition: color 0.2s;
+      font-size: 1.1rem; font-weight: 400; color: var(--text); transition: color 0.2s;
     }
+    .proj-sub { font-size: 0.78rem; color: var(--muted); margin-top: 0.15rem; }
+    .proj-arrow { color: var(--border); font-size: 1rem; transition: all 0.2s; }
 
-    .proj-sub {
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-top: 0.15rem;
-    }
-
-    .proj-arrow {
-      color: var(--border);
-      font-size: 1rem;
-      transition: all 0.2s;
-    }
-
-    /* ── CONTACT ── */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      margin-top: 2rem;
-    }
-
-    .contact-intro {
-      font-size: 0.92rem;
-      color: var(--muted);
-      line-height: 1.8;
-    }
-
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
+    /* CONTACT */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem; }
+    .contact-intro { font-size: 0.92rem; color: var(--muted); line-height: 1.8; }
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
     .contact-link {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem 1.25rem;
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      text-decoration: none;
-      color: var(--muted);
-      font-size: 0.85rem;
-      transition: all 0.2s;
-      background: var(--surface);
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 1.25rem; border: 1px solid var(--border);
+      border-radius: 3px; text-decoration: none; color: var(--muted);
+      font-size: 0.85rem; transition: all 0.2s; background: var(--surface);
     }
-
-    .contact-link:hover {
-      border-color: rgba(157,212,232,0.3);
-      color: var(--ice);
-      transform: translateX(4px);
-    }
-
-    .cl-icon {
-      font-size: 1rem;
-      min-width: 20px;
-    }
-
+    .contact-link:hover { border-color: rgba(157,212,232,0.3); color: var(--ice); transform: translateX(4px); }
+    .cl-icon { font-size: 1rem; min-width: 20px; }
     .cl-label {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      display: block;
-      margin-bottom: 0.1rem;
+      font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); display: block; margin-bottom: 0.1rem;
     }
 
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-copy {
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 2rem 0; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+    .footer-copy, .footer-coords {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--muted);
-      letter-spacing: 0.06em;
+      font-size: 0.65rem; color: var(--muted); letter-spacing: 0.06em;
     }
 
-    .footer-coords {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-    }
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ── SCROLL REVEAL ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ── ANIMATIONS ── */
+    /* ANIMATIONS */
     @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
       from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
-
     @keyframes fadeIn {
-      to { opacity: 1; }
-      from { opacity: 0; }
+      from { opacity: 0; } to { opacity: 1; }
     }
 
-    /* ── SCROLLBAR ── */
+    /* SCROLLBAR */
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--ice-dim); }
 
-    /* ── RESPONSIVE ── */
+    /* RESPONSIVE */
     @media (max-width: 680px) {
       .hero-inner { grid-template-columns: 1fr; }
       .coord-card { display: none; }
-      .about-grid,
-      .research-grid,
-      .contact-grid { grid-template-columns: 1fr; }
+      .about-grid, .research-grid, .contact-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <a class="nav-logo" href="#">EG_</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#research">Research</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#about"    data-tr="Hakkında"  data-en="About">Hakkında</a></li>
+        <li><a href="#research" data-tr="Araştırma" data-en="Research">Araştırma</a></li>
+        <li><a href="#projects" data-tr="Projeler"  data-en="Projects">Projeler</a></li>
+        <li><a href="#contact"  data-tr="İletişim"  data-en="Contact">İletişim</a></li>
+      </ul>
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btn-tr" onclick="setLang('tr')">TR</button>
+        <button class="lang-btn"        id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -600,27 +322,30 @@
     <div class="wrap">
       <div class="hero-inner">
         <div>
-          <p class="hero-tag">// Climate · Glaciology · Remote Sensing</p>
+          <p class="hero-tag" data-tr="// İklim · Glasiyoloji · Uzaktan Algılama" data-en="// Climate · Glaciology · Remote Sensing">
+            // İklim · Glasiyoloji · Uzaktan Algılama
+          </p>
           <h1 class="hero-name">Ertuğrul<br><em>Gül</em></h1>
-          <p class="hero-title">Researcher, Hakkari University</p>
-          <p class="hero-desc">
-            I study climate dynamics and glacier retreat in the Cilo-Sat massif
-            using ERA5-Land reanalysis data, SPEI indices, and remote sensing.
-            My work bridges atmospheric science and high-altitude hydrology in
-            southeastern Turkey.
+          <p class="hero-title" data-tr="Araştırmacı, Hakkari Üniversitesi" data-en="Researcher, Hakkari University">
+            Araştırmacı, Hakkari Üniversitesi
+          </p>
+          <p class="hero-desc"
+             data-tr="Cilo-Sat kütlesi üzerindeki iklim dinamiklerini ve buzul gerilemesini ERA5-Land yeniden analiz verileri, SPEI endeksleri ve uzaktan algılama yöntemleriyle inceliyorum. Çalışmalarım atmosfer bilimi ile yüksek rakımlı hidroloji arasında köprü kuruyor."
+             data-en="I study climate dynamics and glacier retreat in the Cilo-Sat massif using ERA5-Land reanalysis data, SPEI indices, and remote sensing. My work bridges atmospheric science and high-altitude hydrology in southeastern Turkey.">
+            Cilo-Sat kütlesi üzerindeki iklim dinamiklerini ve buzul gerilemesini ERA5-Land yeniden analiz verileri, SPEI endeksleri ve uzaktan algılama yöntemleriyle inceliyorum. Çalışmalarım atmosfer bilimi ile yüksek rakımlı hidroloji arasında köprü kuruyor.
           </p>
           <div class="hero-cta">
-            <a href="#research" class="btn btn-primary">View Research</a>
-            <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+            <a href="#research" class="btn btn-primary" data-tr="Araştırmalar" data-en="View Research">Araştırmalar</a>
+            <a href="#contact"  class="btn btn-ghost"   data-tr="İletişim"     data-en="Get in Touch">İletişim</a>
           </div>
         </div>
 
         <div class="coord-card">
-          <p class="coord-label">Study Region</p>
+          <p class="coord-label" data-tr="Çalışma Bölgesi" data-en="Study Region">Çalışma Bölgesi</p>
           <span class="coord-value">37.5°N</span>
           <span class="coord-value">44.1°E</span>
           <div class="coord-divider"></div>
-          <p class="coord-label">Elevation</p>
+          <p class="coord-label" data-tr="Yükseklik" data-en="Elevation">Yükseklik</p>
           <span class="coord-value">~4135m</span>
           <div class="coord-divider"></div>
           <p class="coord-label">Dataset</p>
@@ -633,40 +358,46 @@
   <!-- ABOUT -->
   <section id="about">
     <div class="wrap">
-      <p class="section-label reveal">01 — About</p>
+      <p class="section-label reveal" data-tr="01 — Hakkında" data-en="01 — About">01 — Hakkında</p>
       <div class="about-grid">
         <div class="about-text reveal">
-          <h2 class="section-heading">Decoding the <em>mountain climate</em></h2>
-          <p>
-            I am a researcher at Hakkari University with a focus on climate
-            variability, drought monitoring, and cryosphere dynamics in
-            the Eastern Taurus and Hakkari mountains.
+          <h2 class="section-heading"
+              data-tr="Dağ iklimini <em>çözmek</em>"
+              data-en="Decoding the <em>mountain climate</em>">
+            Dağ iklimini <em>çözmek</em>
+          </h2>
+          <p data-tr="Hakkari Üniversitesi'nde araştırmacı olarak Doğu Toroslar ve Hakkari dağlarındaki iklim değişkenliği, kuraklık izleme ve kriyosfer dinamikleri üzerine çalışıyorum."
+             data-en="I am a researcher at Hakkari University with a focus on climate variability, drought monitoring, and cryosphere dynamics in the Eastern Taurus and Hakkari mountains.">
+            Hakkari Üniversitesi'nde araştırmacı olarak Doğu Toroslar ve Hakkari dağlarındaki iklim değişkenliği, kuraklık izleme ve kriyosfer dinamikleri üzerine çalışıyorum.
           </p>
-          <p>
-            My primary tools are ERA5-Land reanalysis, SPEI/SPI drought indices,
-            and Landsat/Sentinel-2 imagery to track the long-term evolution of
-            glaciers and snowpack in the Cilo-Sat massif — one of Turkey's
-            last significant glaciated areas.
+          <p data-tr="Temel araçlarım; ERA5-Land yeniden analizi, SPEI/SPI kuraklık endeksleri ve Landsat/Sentinel-2 görüntüleridir. Bu araçlarla Türkiye'nin son önemli buzul alanlarından biri olan Cilo-Sat kütlesindeki buzulların ve kar örtüsünün uzun vadeli değişimini izliyorum."
+             data-en="My primary tools are ERA5-Land reanalysis, SPEI/SPI drought indices, and Landsat/Sentinel-2 imagery to track the long-term evolution of glaciers and snowpack in the Cilo-Sat massif — one of Turkey's last significant glaciated areas.">
+            Temel araçlarım; ERA5-Land yeniden analizi, SPEI/SPI kuraklık endeksleri ve Landsat/Sentinel-2 görüntüleridir. Bu araçlarla Türkiye'nin son önemli buzul alanlarından biri olan Cilo-Sat kütlesindeki buzulların ve kar örtüsünün uzun vadeli değişimini izliyorum.
           </p>
-          <p>
-            I am also interested in downscaling global climate models to
-            regional scales and communicating findings through accessible
-            data visualization.
+          <p data-tr="Aynı zamanda küresel iklim modellerinin bölgesel ölçeğe indirgenmesi ve bulguların erişilebilir veri görselleştirmesi yoluyla paylaşılması konularıyla da ilgileniyorum."
+             data-en="I am also interested in downscaling global climate models to regional scales and communicating findings through accessible data visualization.">
+            Aynı zamanda küresel iklim modellerinin bölgesel ölçeğe indirgenmesi ve bulguların erişilebilir veri görselleştirmesi yoluyla paylaşılması konularıyla da ilgileniyorum.
           </p>
         </div>
 
         <div class="stat-list reveal">
           <div class="stat-item">
             <span class="stat-num">74yr</span>
-            <p class="stat-desc">ERA5-Land temporal coverage analyzed (1950–2024)</p>
+            <p class="stat-desc" data-tr="Analiz edilen ERA5-Land zaman kapsamı (1950–2024)" data-en="ERA5-Land temporal coverage analyzed (1950–2024)">
+              Analiz edilen ERA5-Land zaman kapsamı (1950–2024)
+            </p>
           </div>
           <div class="stat-item">
             <span class="stat-num">Cilo-Sat</span>
-            <p class="stat-desc">Primary study area — Hakkari glacial complex, 4135 m</p>
+            <p class="stat-desc" data-tr="Ana çalışma alanı — Hakkari buzul kompleksi, 4135 m" data-en="Primary study area — Hakkari glacial complex, 4135 m">
+              Ana çalışma alanı — Hakkari buzul kompleksi, 4135 m
+            </p>
           </div>
           <div class="stat-item">
             <span class="stat-num">SPEI</span>
-            <p class="stat-desc">Standardized Precipitation Evapotranspiration Index — drought analysis</p>
+            <p class="stat-desc" data-tr="Standartlaştırılmış Yağış-Buharlaşma Endeksi — kuraklık analizi" data-en="Standardized Precipitation Evapotranspiration Index — drought analysis">
+              Standartlaştırılmış Yağış-Buharlaşma Endeksi — kuraklık analizi
+            </p>
           </div>
         </div>
       </div>
@@ -676,67 +407,63 @@
   <!-- RESEARCH -->
   <section id="research">
     <div class="wrap">
-      <p class="section-label reveal">02 — Research</p>
-      <h2 class="section-heading reveal">Areas of <em>inquiry</em></h2>
+      <p class="section-label reveal" data-tr="02 — Araştırma" data-en="02 — Research">02 — Araştırma</p>
+      <h2 class="section-heading reveal"
+          data-tr="Çalışma <em>alanları</em>"
+          data-en="Areas of <em>inquiry</em>">
+        Çalışma <em>alanları</em>
+      </h2>
 
       <div class="research-grid reveal">
         <div class="research-card">
           <span class="rc-icon">❄</span>
-          <h3 class="rc-title">Glacier &amp; Snow Dynamics</h3>
-          <p class="rc-desc">
-            Tracking glacier area change and snowpack variability in the
-            Cilo-Sat massif using multi-decadal satellite imagery and
-            reanalysis temperature trends.
+          <h3 class="rc-title" data-tr="Buzul ve Kar Dinamikleri" data-en="Glacier &amp; Snow Dynamics">Buzul ve Kar Dinamikleri</h3>
+          <p class="rc-desc"
+             data-tr="Cilo-Sat kütlesindeki buzul alan değişimini ve kar örtüsü değişkenliğini çok on yıllık uydu görüntüleri ve yeniden analiz sıcaklık trendleri kullanarak izliyorum."
+             data-en="Tracking glacier area change and snowpack variability in the Cilo-Sat massif using multi-decadal satellite imagery and reanalysis temperature trends.">
+            Cilo-Sat kütlesindeki buzul alan değişimini ve kar örtüsü değişkenliğini çok on yıllık uydu görüntüleri ve yeniden analiz sıcaklık trendleri kullanarak izliyorum.
           </p>
           <div class="rc-tags">
-            <span class="tag">ERA5-Land</span>
-            <span class="tag">Sentinel-2</span>
-            <span class="tag">Landsat</span>
+            <span class="tag">ERA5-Land</span><span class="tag">Sentinel-2</span><span class="tag">Landsat</span>
           </div>
         </div>
 
         <div class="research-card">
           <span class="rc-icon">⟁</span>
-          <h3 class="rc-title">Drought &amp; Climate Indices</h3>
-          <p class="rc-desc">
-            Computing SPEI and SPI at multiple timescales to characterize
-            drought frequency, duration, and severity across Hakkari Province
-            from 1950 to present.
+          <h3 class="rc-title" data-tr="Kuraklık ve İklim Endeksleri" data-en="Drought &amp; Climate Indices">Kuraklık ve İklim Endeksleri</h3>
+          <p class="rc-desc"
+             data-tr="Hakkari İli genelinde 1950'den günümüze kuraklık sıklığı, süresi ve şiddetini tanımlamak için SPEI ve SPI'yi çok zaman ölçeğinde hesaplıyorum."
+             data-en="Computing SPEI and SPI at multiple timescales to characterize drought frequency, duration, and severity across Hakkari Province from 1950 to present.">
+            Hakkari İli genelinde 1950'den günümüze kuraklık sıklığı, süresi ve şiddetini tanımlamak için SPEI ve SPI'yi çok zaman ölçeğinde hesaplıyorum.
           </p>
           <div class="rc-tags">
-            <span class="tag">SPEI</span>
-            <span class="tag">SPI</span>
-            <span class="tag">Trend Analysis</span>
+            <span class="tag">SPEI</span><span class="tag">SPI</span><span class="tag">Trend Analizi</span>
           </div>
         </div>
 
         <div class="research-card">
           <span class="rc-icon">◈</span>
-          <h3 class="rc-title">Temperature Anomaly Detection</h3>
-          <p class="rc-desc">
-            Identifying warming trends and extreme heat events using
-            ERA5-Land 2m temperature data with Mann-Kendall trend
-            tests and Sen's slope estimation.
+          <h3 class="rc-title" data-tr="Sıcaklık Anomalisi Tespiti" data-en="Temperature Anomaly Detection">Sıcaklık Anomalisi Tespiti</h3>
+          <p class="rc-desc"
+             data-tr="ERA5-Land 2m sıcaklık verisiyle Mann-Kendall trend testi ve Sen eğimi kullanarak ısınma trendlerini ve aşırı sıcaklık olaylarını belirliyorum."
+             data-en="Identifying warming trends and extreme heat events using ERA5-Land 2m temperature data with Mann-Kendall trend tests and Sen's slope estimation.">
+            ERA5-Land 2m sıcaklık verisiyle Mann-Kendall trend testi ve Sen eğimi kullanarak ısınma trendlerini ve aşırı sıcaklık olaylarını belirliyorum.
           </p>
           <div class="rc-tags">
-            <span class="tag">Mann-Kendall</span>
-            <span class="tag">Sen's Slope</span>
-            <span class="tag">Python</span>
+            <span class="tag">Mann-Kendall</span><span class="tag">Sen Eğimi</span><span class="tag">Python</span>
           </div>
         </div>
 
         <div class="research-card">
           <span class="rc-icon">◎</span>
-          <h3 class="rc-title">Climate Data Visualization</h3>
-          <p class="rc-desc">
-            Designing publication-quality figures for complex climatological
-            datasets — spatial maps, temporal trend plots, anomaly heatmaps —
-            for scientific and public audiences.
+          <h3 class="rc-title" data-tr="İklim Verisi Görselleştirme" data-en="Climate Data Visualization">İklim Verisi Görselleştirme</h3>
+          <p class="rc-desc"
+             data-tr="Karmaşık klimatolojik veri setleri için yayın kalitesinde şekiller tasarlıyorum: mekansal haritalar, zamansal trend grafikleri ve anomali ısı haritaları."
+             data-en="Designing publication-quality figures for complex climatological datasets — spatial maps, temporal trend plots, anomaly heatmaps — for scientific and public audiences.">
+            Karmaşık klimatolojik veri setleri için yayın kalitesinde şekiller tasarlıyorum: mekansal haritalar, zamansal trend grafikleri ve anomali ısı haritaları.
           </p>
           <div class="rc-tags">
-            <span class="tag">Matplotlib</span>
-            <span class="tag">Cartopy</span>
-            <span class="tag">xarray</span>
+            <span class="tag">Matplotlib</span><span class="tag">Cartopy</span><span class="tag">xarray</span>
           </div>
         </div>
       </div>
@@ -746,15 +473,21 @@
   <!-- PROJECTS -->
   <section id="projects">
     <div class="wrap">
-      <p class="section-label reveal">03 — Projects</p>
-      <h2 class="section-heading reveal">Current <em>work</em></h2>
+      <p class="section-label reveal" data-tr="03 — Projeler" data-en="03 — Projects">03 — Projeler</p>
+      <h2 class="section-heading reveal" data-tr="Güncel <em>çalışmalar</em>" data-en="Current <em>work</em>">
+        Güncel <em>çalışmalar</em>
+      </h2>
 
       <div class="project-list">
         <div class="project-item reveal">
           <span class="proj-year">2024</span>
           <div>
-            <p class="proj-title">ERA5-Land Hakkari Climate Analysis</p>
-            <p class="proj-sub">Long-term temperature and precipitation trends · Hakkari Province · 1950–2024</p>
+            <p class="proj-title" data-tr="ERA5-Land Hakkari İklim Analizi" data-en="ERA5-Land Hakkari Climate Analysis">
+              ERA5-Land Hakkari İklim Analizi
+            </p>
+            <p class="proj-sub" data-tr="Uzun vadeli sıcaklık ve yağış trendleri · Hakkari İli · 1950–2024" data-en="Long-term temperature and precipitation trends · Hakkari Province · 1950–2024">
+              Uzun vadeli sıcaklık ve yağış trendleri · Hakkari İli · 1950–2024
+            </p>
           </div>
           <span class="proj-arrow">↗</span>
         </div>
@@ -762,8 +495,12 @@
         <div class="project-item reveal">
           <span class="proj-year">2024</span>
           <div>
-            <p class="proj-title">Hakkari SPEI Drought Index</p>
-            <p class="proj-sub">Multi-scale drought characterization using SPEI-1, SPEI-3, SPEI-12</p>
+            <p class="proj-title" data-tr="Hakkari SPEI Kuraklık Endeksi" data-en="Hakkari SPEI Drought Index">
+              Hakkari SPEI Kuraklık Endeksi
+            </p>
+            <p class="proj-sub" data-tr="SPEI-1, SPEI-3, SPEI-12 çok ölçekli kuraklık karakterizasyonu" data-en="Multi-scale drought characterization using SPEI-1, SPEI-3, SPEI-12">
+              SPEI-1, SPEI-3, SPEI-12 çok ölçekli kuraklık karakterizasyonu
+            </p>
           </div>
           <span class="proj-arrow">↗</span>
         </div>
@@ -771,8 +508,12 @@
         <div class="project-item reveal">
           <span class="proj-year">2023</span>
           <div>
-            <p class="proj-title">Cilo-Sat Glacier Retreat Mapping</p>
-            <p class="proj-sub">Remote sensing assessment of glacier area change · Sentinel-2 time series</p>
+            <p class="proj-title" data-tr="Cilo-Sat Buzul Gerilemesi Haritalama" data-en="Cilo-Sat Glacier Retreat Mapping">
+              Cilo-Sat Buzul Gerilemesi Haritalama
+            </p>
+            <p class="proj-sub" data-tr="Sentinel-2 zaman serisiyle uzaktan algılama buzul alan değişimi analizi" data-en="Remote sensing assessment of glacier area change · Sentinel-2 time series">
+              Sentinel-2 zaman serisiyle uzaktan algılama buzul alan değişimi analizi
+            </p>
           </div>
           <span class="proj-arrow">↗</span>
         </div>
@@ -780,8 +521,12 @@
         <div class="project-item reveal">
           <span class="proj-year">2023</span>
           <div>
-            <p class="proj-title">Regional Climate Downscaling</p>
-            <p class="proj-sub">Bias-corrected ERA5 for high-altitude terrain · Eastern Taurus Mountains</p>
+            <p class="proj-title" data-tr="Bölgesel İklim Ölçek Küçültme" data-en="Regional Climate Downscaling">
+              Bölgesel İklim Ölçek Küçültme
+            </p>
+            <p class="proj-sub" data-tr="Yüksek rakımlı arazi için önyargı düzeltmeli ERA5 · Doğu Toroslar" data-en="Bias-corrected ERA5 for high-altitude terrain · Eastern Taurus Mountains">
+              Yüksek rakımlı arazi için önyargı düzeltmeli ERA5 · Doğu Toroslar
+            </p>
           </div>
           <span class="proj-arrow">↗</span>
         </div>
@@ -792,14 +537,16 @@
   <!-- CONTACT -->
   <section id="contact">
     <div class="wrap">
-      <p class="section-label reveal">04 — Contact</p>
+      <p class="section-label reveal" data-tr="04 — İletişim" data-en="04 — Contact">04 — İletişim</p>
       <div class="contact-grid">
         <div class="reveal">
-          <h2 class="section-heading">Let's <em>connect</em></h2>
-          <p class="contact-intro">
-            I am open to research collaboration, data sharing, and discussions
-            on climate science in mountain environments. Feel free to reach out
-            via email or through GitHub.
+          <h2 class="section-heading" data-tr="Bağlantı <em>kuralım</em>" data-en="Let's <em>connect</em>">
+            Bağlantı <em>kuralım</em>
+          </h2>
+          <p class="contact-intro"
+             data-tr="Araştırma işbirlikleri, veri paylaşımı ve dağ ortamlarındaki iklim bilimi üzerine tartışmalara açığım. E-posta veya GitHub üzerinden iletişime geçebilirsiniz."
+             data-en="I am open to research collaboration, data sharing, and discussions on climate science in mountain environments. Feel free to reach out via email or through GitHub.">
+            Araştırma işbirlikleri, veri paylaşımı ve dağ ortamlarındaki iklim bilimi üzerine tartışmalara açığım. E-posta veya GitHub üzerinden iletişime geçebilirsiniz.
           </p>
         </div>
 
@@ -807,11 +554,10 @@
           <a href="mailto:ertugrulgul@hakkari.edu.tr" class="contact-link">
             <span class="cl-icon">✉</span>
             <div>
-              <span class="cl-label">Email</span>
+              <span class="cl-label" data-tr="E-posta" data-en="Email">E-posta</span>
               ertugrulgul@hakkari.edu.tr
             </div>
           </a>
-
           <a href="https://github.com/ertugrul-gul" class="contact-link" target="_blank" rel="noopener">
             <span class="cl-icon">⌥</span>
             <div>
@@ -819,12 +565,11 @@
               ertugrul-gul
             </div>
           </a>
-
           <a href="https://hakkari.edu.tr" class="contact-link" target="_blank" rel="noopener">
             <span class="cl-icon">◌</span>
             <div>
-              <span class="cl-label">Institution</span>
-              Hakkari University
+              <span class="cl-label" data-tr="Kurum" data-en="Institution">Kurum</span>
+              Hakkari Üniversitesi
             </div>
           </a>
         </div>
@@ -832,16 +577,39 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
-    <div class="wrap" style="display:flex;justify-content:space-between;width:100%;">
-      <span class="footer-copy">© 2026 Ertuğrul Gül</span>
-      <span class="footer-coords">37°34'N 44°02'E · Hakkari, TR</span>
+    <div class="wrap">
+      <div class="footer-inner">
+        <span class="footer-copy">© 2026 Ertuğrul Gül</span>
+        <span class="footer-coords">37°34'N 44°02'E · Hakkari, TR</span>
+      </div>
     </div>
   </footer>
 
   <script>
-    // Scroll reveal
+    // ── LANGUAGE SWITCHER ──
+    let currentLang = localStorage.getItem('lang') || 'tr';
+
+    function setLang(lang) {
+      currentLang = lang;
+      localStorage.setItem('lang', lang);
+      document.documentElement.lang = lang;
+
+      // Toggle button styles
+      document.getElementById('btn-tr').classList.toggle('active', lang === 'tr');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+      // Update all translatable elements
+      document.querySelectorAll('[data-tr]').forEach(el => {
+        const val = el.getAttribute('data-' + lang);
+        if (val) el.innerHTML = val;
+      });
+    }
+
+    // Apply on load
+    setLang(currentLang);
+
+    // ── SCROLL REVEAL ──
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((e, i) => {
         if (e.isIntersecting) {
@@ -853,18 +621,14 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Nav active state
+    // ── NAV ACTIVE ──
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-links a');
-
     window.addEventListener('scroll', () => {
       let current = '';
-      sections.forEach(s => {
-        if (window.scrollY >= s.offsetTop - 120) current = s.id;
-      });
+      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
       navLinks.forEach(a => {
-        a.style.color = a.getAttribute('href') === `#${current}`
-          ? 'var(--ice)' : '';
+        a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--ice)' : '';
       });
     });
   </script>
